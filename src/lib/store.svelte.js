@@ -9,8 +9,7 @@ export let store = $state({
 		console.log('response: ', response);
 		store.rabbits = await response.json();
 	},
-	editRabbit: async (id) => {
-		let newName = prompt('New Rabbit Name:', 'neuer Name');
+	editRabbit: async (id, newName) => {
 		let editedRabbit = {
 			name: newName
 		};
@@ -22,8 +21,11 @@ export let store = $state({
 				},
 				body: JSON.stringify(editedRabbit)
 			});
+			if (!response.ok) {
+				alert(await response.text());
+			}
 		} catch (error) {
-			console.log(error);
+			console.log('FEHLER');
 		}
 		store.listRabbits();
 	},
