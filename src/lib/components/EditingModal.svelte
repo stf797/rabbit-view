@@ -44,6 +44,13 @@
 				<span>Watch out! Rabbit names must start with "J"!</span>
 			</div>
 		{/if}
+		<label for="name">Hasenbau</label>
+		{rabbit.rabbithole}
+		<select class="select" bind:value={rabbit.rabbithole}>
+			{#each rabbitholes as rabbithole (rabbithole.id)}
+				<option value={rabbithole.id}>{rabbithole.name}</option>
+			{/each}
+		</select>
 		<div class="modal-action">
 			<form method="dialog" class="flex gap-2">
 				<!-- if there is a button in form, it will close the modal -->
@@ -51,9 +58,9 @@
 				<button
 					class="btn btn-primary"
 					onclick={editRabbit}
-					disabled={wrongRabbitName || rabbit.name === ''}>Change Name!</button
+					disabled={wrongRabbitName || newName === ''}>Change Name!</button
 				>
 			</form>
 		</div>
-	</div>
-</dialog>
+	{/if}
+</div>

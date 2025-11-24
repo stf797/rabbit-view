@@ -3,14 +3,11 @@
 	import EditingModal from '$lib/components/EditingModal.svelte';
 	import { serverAddress, store } from '$lib/store.svelte.js';
 	import Icon from '@iconify/svelte';
+	import { goto } from '$app/navigation';
 
 	let currentRabbitId = $state('');
 
 	// unser "Konstruktor" (lifecycle hook) - läuft jedesmal, wenn die Seite bzw. die Komponente geladen wird:
-	$effect(() => {
-		store.listRabbits();
-		$inspect('🐰: ', store.rabbits);
-	});
 </script>
 
 <!-- unser Template / HTML-Teil der Seite bzw. der Komponente -->
@@ -34,8 +31,7 @@
 		<div class="pr-3">
 			<button
 				onclick={() => {
-					currentRabbitId = rabbit.id;
-					editingModal.showModal();
+					goto(`/${rabbit.id}`);
 				}}
 				class="cursor-pointer"><Icon icon="carbon:edit" width="16" height="16" /></button
 			>
@@ -48,6 +44,6 @@
 	{/each}
 </div>
 
-<EditingModal bind:currentRabbitId></EditingModal>
+<button class="btn btn-primary"><a href="/add">New Rabbit</a></button>
 
-<RabbitForm></RabbitForm>
+<EditingModal bind:currentRabbitId></EditingModal>

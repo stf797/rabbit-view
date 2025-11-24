@@ -1,9 +1,15 @@
 <script>
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
+	import { store } from '$lib/store.svelte';
 
 	let { children } = $props();
 	let theme = $state('cyberpunk');
+
+	$effect(() => {
+		store.listRabbits();
+		$inspect('🐰: ', store.rabbits);
+	});
 </script>
 
 <svelte:head>
