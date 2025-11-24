@@ -33,7 +33,9 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	<h3 class="text-lg font-bold">Edit rabbit with ID {currentRabbitId}</h3>
+	<h3 class="text-lg font-bold">
+		{currentRabbitId ? `Edit rabbit with ID ${currentRabbitId}` : 'Create new rabbit'}
+	</h3>
 	<label class="input">
 		<span class="label">Name</span>
 		<input type="text" bind:value={rabbit.name} />

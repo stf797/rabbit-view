@@ -27,7 +27,7 @@
 			<option value="halloween">halloween</option>
 		</select>
 	</nav>
-	<main class="flex min-h-screen flex-col items-center justify-center gap-4 p-2">
+	<main class="flex min-h-screen flex-col items-center gap-4 p-2">
 		{@render children?.()}
 	</main>
 </div>
