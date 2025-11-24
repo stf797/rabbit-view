@@ -45,5 +45,3 @@
 </div>
 
 <button class="btn btn-primary"><a href="/add">New Rabbit</a></button>
-
-<EditingModal bind:currentRabbitId></EditingModal>
