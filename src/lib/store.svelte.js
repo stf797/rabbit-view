@@ -7,18 +7,16 @@ export const pb = new PocketBase('http://127.0.0.1:8090');
 
 export let store = $state({
 	rabbits: [],
+	currentRabbitId: '',
 	listRabbits: async () => {
 		store.rabbits = await pb.collection('rabbits').getFullList({
 			expand: 'rabbithole'
 		});
 	},
 
-	editRabbit: async (id, newName) => {
-		let editedRabbit = {
-			name: newName
-		};
+	editRabbit: async (id, rabbit) => {
 		try {
-			const record = await pb.collection('rabbits').update(id, editedRabbit);
+			const record = await pb.collection('rabbits').update(id, rabbit);
 			if (!response.ok) {
 				alert(await response.text());
 			}
@@ -31,8 +29,8 @@ export let store = $state({
 		await pb.collection('rabbits').delete(id);
 		store.listRabbits();
 	},
-	addRabbit: async (name, rabbithole) => {
-		const response = await pb.collection('rabbits').create({ name, rabbithole: rabbithole });
-		console.log(response);
+	addRabbit: async (rabbit) => {
+		const response = await pb.collection('rabbits').create(rabbit);
+		store.listRabbits();
 	}
 });
