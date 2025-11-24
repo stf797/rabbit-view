@@ -1,6 +1,6 @@
 <script>
-	import EditingModal from '$lib/components/EditingModal.svelte';
+	import RabbitForm from '$lib/components/RabbitForm.svelte';
 	import { page } from '$app/stores';
 </script>
 
-<EditingModal currentRabbitId={$page.params.rabbit}></EditingModal>
+<RabbitForm currentRabbitId={$page.params.rabbit}></RabbitForm>

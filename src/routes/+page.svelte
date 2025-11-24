@@ -1,7 +1,5 @@
 <script>
-	import RabbitForm from '$lib/components/RabbitForm.svelte';
-	import EditingModal from '$lib/components/EditingModal.svelte';
-	import { serverAddress, store } from '$lib/store.svelte.js';
+	import { store } from '$lib/store.svelte.js';
 	import Icon from '@iconify/svelte';
 	import { goto } from '$app/navigation';
 

@@ -29,8 +29,8 @@ export let store = $state({
 		await pb.collection('rabbits').delete(id);
 		store.listRabbits();
 	},
-	addRabbit: async (name, rabbithole) => {
-		const response = await pb.collection('rabbits').create({ name, rabbithole: rabbithole });
-		console.log(response);
+	addRabbit: async (rabbit) => {
+		const response = await pb.collection('rabbits').create(rabbit);
+		store.listRabbits();
 	}
 });
