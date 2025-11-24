@@ -8,8 +8,8 @@
 	});
 
 	let rabbitholes = $state([]);
-	let wrongRabbitName = false;
-	// let wrongRabbitName = $derived(rabbit.name && rabbit.name[0] !== 'J' && rabbit.name.length > 0);
+
+	let wrongRabbitName = $derived(rabbit.name && rabbit.name[0] !== 'J' && rabbit.name.length > 0);
 
 	async function editRabbit() {
 		await store.editRabbit(currentRabbitId, rabbit);
@@ -25,15 +25,25 @@
 	});
 </script>
 
-<div>
+<div class="flex flex-col gap-2">
 	<h3 class="text-lg font-bold">Edit rabbit with ID {currentRabbitId}</h3>
 	<label class="input">
 		<span class="label">Name</span>
 		<input type="text" bind:value={rabbit.name} />
 	</label>
 
+	<div>
+		<label class="select">
+			<span class="label">Rabbithole</span>
+			<select bind:value={rabbit.rabbithole}>
+				{#each rabbitholes as rabbithole (rabbithole.id)}
+					<option value={rabbithole.id}>{rabbithole.name}</option>
+				{/each}
+			</select>
+		</label>
+	</div>
 	{#if wrongRabbitName}
-		<div role="alert" class="mt-4 alert alert-error">
+		<div role="alert" class="alert alert-error">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-6 w-6 shrink-0 stroke-current"
@@ -50,25 +60,13 @@
 			<span>Watch out! Rabbit names must start with "J"!</span>
 		</div>
 	{/if}
-	<div>
-		<label class="select">
-			<span class="label">Rabbithole</span>
-			<select bind:value={rabbit.rabbithole}>
-				{#each rabbitholes as rabbithole (rabbithole.id)}
-					<option value={rabbithole.id}>{rabbithole.name}</option>
-				{/each}
-			</select>
-		</label>
-	</div>
-	<div class="modal-action">
-		<form method="dialog" class="flex gap-2">
-			<!-- if there is a button in form, it will close the modal -->
-			<button class="btn"><a href="/">Cancel</a></button>
-			<button
-				class="btn btn-primary"
-				onclick={editRabbit}
-				disabled={wrongRabbitName || rabbit.name === ''}>Change Name!</button
-			>
-		</form>
+	<div class="self-end">
+		<!-- if there is a button in form, it will close the modal -->
+		<button class="btn"><a href="/">Cancel</a></button>
+		<button
+			class="btn btn-primary"
+			onclick={editRabbit}
+			disabled={wrongRabbitName || rabbit.name === ''}>Change Name!</button
+		>
 	</div>
 </div>
