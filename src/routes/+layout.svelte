@@ -4,7 +4,7 @@
 	import { store } from '$lib/store.svelte';
 
 	let { children } = $props();
-	let theme = $state('cyberpunk');
+	let theme = $state('halloween');
 
 	$effect(() => {
 		store.listRabbits();
