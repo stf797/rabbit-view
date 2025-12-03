@@ -1,4 +1,5 @@
 <script>
+<<<<<<< Updated upstream
 	import { serverAddress, store } from '$lib/store.svelte.js';
 
 	let name = $state('');
@@ -34,3 +35,18 @@
 		<span>Watch out! Rabbit names must start with "J"!</span>
 	</div>
 {/if}
+=======
+    import { serverAddress } from '$lib/store.svelte.js';
+ 
+    let name = $state('');
+    async function addRabbit() {
+        await store.addRabbit(name);
+        name = '';
+        store.listRabbits();
+    }
+</script>
+ 
+<input type="text" bind:value={name} class="text-black" />
+<button class="cursor-pointer" onclick={addRabbit}>Add Rabbit!</button>
+
+>>>>>>> Stashed changes

@@ -51,6 +51,7 @@
 	{/each}
 </div>
 
+<<<<<<< Updated upstream
 <dialog id="editingModal" class="modal">
 	<div class="modal-box">
 		<h3 class="text-lg font-bold">Edit rabbit with ID {currentRabbitId}</h3>
@@ -88,3 +89,8 @@
 </dialog>
 
 <RabbitForm></RabbitForm>
+=======
+<RabbitForm>
+ 
+</RabbitForm>
+>>>>>>> Stashed changes

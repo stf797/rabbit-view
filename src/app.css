@@ -1,6 +1,10 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
+<<<<<<< Updated upstream
 @plugin "daisyui" {
 	themes: all;
 }
+=======
+@plugin "daisyui";
+>>>>>>> Stashed changes
